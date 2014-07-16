@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Classes="clr-namespace:Videotheek_DLL.Classes;assembly=Videotheek_DLL" mc:Ignorable="d" x:Class="Videotheek_WPF.MainWindow"
+        Title="Videotheek" Loaded="Window_Loaded" SizeToContent="WidthAndHeight" Language="nl-BE">
+    <Window.Resources>
+        <CollectionViewSource x:Key="filmViewSource" d:DesignSource="{d:DesignInstance {x:Type Classes:Film}, CreateList=True}"/>
+        <CollectionViewSource x:Key="genreViewSource" d:DesignSource="{d:DesignInstance {x:Type Classes:Genre}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid Width="676">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" DataContext="{StaticResource filmViewSource}" Grid.Column="0" Margin="10,9,10,11" >
+            <Label x:Name="labelTitel" Content="Videotheek - Films" FontSize="36" FontWeight="Bold" FontFamily="Comic Sans MS" />
+            <ListBox x:Name="listBoxFilms" ItemsSource="{Binding}" DisplayMemberPath="Titel" SelectedValuePath="BandNr" Margin="10" Height="150"/>
+            <Grid x:Name="grid1" DataContext="{StaticResource filmViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Bandnr" Grid.Column="0" Grid.Row="0" Margin="10" />
+                <TextBox x:Name="bandNrTextBox" Grid.Column="1" Grid.Row="0" Text="{Binding BandNr, Mode=OneWay}" IsReadOnly="True" HorizontalAlignment="Left" Width="100" Margin="10" IsEnabled="False"/>
+                <Label Content="Titel" Grid.Column="0" Grid.Row="1" Margin="10" />
+                <TextBox x:Name="titelTextBox" Grid.Column="1" Grid.Row="1" Text="{Binding Titel, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Width="250" Margin="10"/>
+                <Label Content="Genre" Grid.Column="0" HorizontalAlignment="Left" Margin="10,6,0,10" Grid.Row="2" VerticalAlignment="Center"/>
+                <ComboBox x:Name="genreNrComboBox" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Source={StaticResource genreViewSource}}" DisplayMemberPath="GenreNaam" SelectedValuePath="GenreNr" SelectedValue="{Binding GenreNr, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+					Width="250"	VerticalAlignment="Center" Margin="10" />
+                <Label Content="In Voorraad" Grid.Column="0" Grid.Row="3" Margin="10" />
+                <TextBox x:Name="inVoorraadTextBox" Grid.Column="1" Grid.Row="3" Text="{Binding InVoorraad, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Width="100" Margin="10" />
+                <Label Content="Uit voorraad" Grid.Column="0" Grid.Row="4" Margin="10" />
+                <TextBox x:Name="uitVoorraadTextBox" Grid.Column="1" Grid.Row="4" Text="{Binding UitVoorraad, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Width="100" Margin="10" />
+                <Label Content="Prijs" Grid.Column="0" Grid.Row="5" Margin="10" />
+                <TextBox x:Name="prijsTextBox" Grid.Column="1" Grid.Row="5" Text="{Binding Prijs, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, StringFormat='{}{0:C}'}" HorizontalAlignment="Left" Width="100" Margin="10" GotFocus="prijsTextBox_GotFocus" LostFocus="prijsTextBox_LostFocus"/>
+                <Label Content="Totaal Verhuurd" Grid.Column="0" Grid.Row="6" Margin="10" />
+                <TextBox x:Name="totaalVerhuurdTextBox" Grid.Column="1" Grid.Row="6" Text="{Binding TotaalVerhuurd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Width="100" Margin="10" />
+            </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+            <Button x:Name="buttonToevoegen" Content="Toevoegen" Height="65" Margin="0,0,-179,0" Click="buttonToevoegen_Click"/>
+            <Button x:Name="buttonVerwijderen" Content="Verwijderen" Margin="0,10,-179,0" Height="65" Click="buttonVerwijderen_Click"/>
+            <Button x:Name="buttonOpslaan" Content="Wijzigingen opslaan" Margin="0,30,-179,0" Height="65" Click="buttonOpslaan_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

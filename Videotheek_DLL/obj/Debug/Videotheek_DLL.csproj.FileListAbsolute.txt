@@ -1,0 +1,6 @@
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\bin\Debug\Videotheek_DLL.dll
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\bin\Debug\Videotheek_DLL.pdb
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\bin\Debug\MySql.Data.dll
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\bin\Debug\MySql.Web.dll
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\obj\Debug\Videotheek_DLL.dll
+C:\Users\luc.dhaenen\Documents\Visual Studio 2013\Projects\Videotheek_ADO\Videotheek_DLL\obj\Debug\Videotheek_DLL.pdb
